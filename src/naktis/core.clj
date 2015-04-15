@@ -22,7 +22,7 @@
 ;; To be able to set upper and lower boundaries when randomizing
 (defn randomize
   [lower-limit upper-limit]
-  (int (+ lower-limit (* (rand) upper-limit))))
+  (int (+ lower-limit (* (rand) (- upper-limit lower-limit)))))
 
 ;; Randomize initial state
 (defn roulette
@@ -57,9 +57,9 @@
       (let [input (read-line)]
         (when (and (not= input "1") (not= input "2") (not= input "3") (not= input "4"))
           (println "Empiezas mal la noche... Voy a tirar desde el 1"))))
-  (Thread/sleep 3000)
+  (Thread/sleep 1500)
   (println "...")
-  (Thread/sleep 3000)
+  (Thread/sleep 1500)
   (println "...")
-  (Thread/sleep 3000)
+  (Thread/sleep 1500)
   (roulette))
