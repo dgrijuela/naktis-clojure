@@ -1,20 +1,17 @@
 (ns naktis.core)
 
-;; This is the global status of the game
-(def status (atom nil))
-
 ;; Helper to print status' properties
 (defn print-status
-  []
-  (print (str "| Tribu: " (:stereotype @status) " | "))
-  (print (str "Dinero: " (:money @status) " € | "))
-  (print (str "Sex-appeal: " (:sex-appeal @status) "/10 | "))
-  (print (str "Labia: " (:mouth @status) "/10 | "))
-  (print (str "Alcohol: " (:alcohol @status) " | "))
-  (println (str "Hora: " (format "%.2f" (:hour @status)) " |")))
+  [status]
+  (print (str "| Tribu: " (:stereotype status) " | "))
+  (print (str "Dinero: " (:money status) " € | "))
+  (print (str "Sex-appeal: " (:sex-appeal status) "/10 | "))
+  (print (str "Labia: " (:mouth status) "/10 | "))
+  (print (str "Alcohol: " (:alcohol status) " | "))
+  (println (str "Hora: " (format "%.2f" (:hour status)) " |")))
 
 (defn play
-  [])
+  [status])
 
 ;; Let's keep it simple for now (:heavy, :emo, :hipster, :rapero...)
 (def stereotypes [:pijo, :cani])
@@ -26,16 +23,16 @@
 
 ;; Randomize initial state
 (defn roulette
-  []
-  (reset! status {:alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
-                  :money      (randomize 5 100)
-                  :sex-appeal (randomize 2 10)
-                  :mouth      (randomize 2 10)
-                  :hour       22.0
-                  :stereotype (name (rand-nth stereotypes))})
-  (println "Esto es lo que te ha tocado:")
-  (print-status)
-  (play))
+  [status]
+  (let [status (assoc status :alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
+                              :money      (randomize 5 100)
+                              :sex-appeal (randomize 2 10)
+                              :mouth      (randomize 2 10)
+                              :hour       22.0
+                              :stereotype (name (rand-nth stereotypes)))]
+      (println "Esto es lo que te ha tocado:")
+      (print-status status)
+      (play status)))
 
 ;; The game begins...
 (defn -main
@@ -62,4 +59,5 @@
   (Thread/sleep 1500)
   (println "...")
   (Thread/sleep 1500)
-  (roulette))
+  (let [status {}]
+    (roulette status)))
