@@ -1,17 +1,48 @@
 (ns naktis.core)
 
+;; This is the global status of the game
+(def status (atom nil))
+
 ;; Helper to print status' properties
 (defn print-status
-  [status]
-  (print (str "| Tribu: " (:stereotype status) " | "))
-  (print (str "Dinero: " (:money status) " € | "))
-  (print (str "Sex-appeal: " (:sex-appeal status) "/10 | "))
-  (print (str "Labia: " (:mouth status) "/10 | "))
-  (print (str "Alcohol: " (:alcohol status) " | "))
-  (println (str "Hora: " (format "%.2f" (:hour status)) " |")))
+  []
+  (print (str "| Tribu: " (:stereotype @status) " | "))
+  (print (str "Dinero: " (:money @status) " € | "))
+  (print (str "Sex-appeal: " (:sex-appeal @status) "/10 | "))
+  (print (str "Labia: " (:mouth @status) "/10 | "))
+  (print (str "Alcohol: " (:alcohol @status) " | "))
+  (println (str "Hora: " (format "%.2f" (:hour @status)) " |")))
 
-(defn play
-  [status])
+(defn poligono []
+  (println "ola primo"))
+
+(defn chalet []
+  (println "osea"))
+
+(defn fabrik []
+  (println "el fabri ninio"))
+
+(defn nells []
+  (println "no camisa no entras"))
+
+(defn discoteca []
+  (cond
+    (= (:stereotype @status) "cani") (fabrik)
+    (= (:stereotype @status) "pijo") (nells))
+  (swap! status assoc :step 3))
+
+(defn botellon []
+  (cond
+    (= (:stereotype @status) "cani") (poligono)
+    (= (:stereotype @status) "pijo") (chalet))
+  (swap! status assoc :step 2))
+
+(defn play []
+  (cond
+    (= (:step @status) 1) (botellon)
+    (= (:step @status) 2) (discoteca)
+    (= (:step @status) 3) (System/exit 0))
+  (recur))
 
 ;; Let's keep it simple for now (:heavy, :emo, :hipster, :rapero...)
 (def stereotypes [:pijo, :cani])
@@ -22,17 +53,17 @@
   (int (+ lower-limit (* (rand) (- upper-limit lower-limit)))))
 
 ;; Randomize initial state
-(defn roulette
-  [status]
-  (let [status (assoc status :alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
-                              :money      (randomize 5 100)
-                              :sex-appeal (randomize 2 10)
-                              :mouth      (randomize 2 10)
-                              :hour       22.0
-                              :stereotype (name (rand-nth stereotypes)))]
-      (println "Esto es lo que te ha tocado:")
-      (print-status status)
-      (play status)))
+(defn roulette []
+  (reset! status {:alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
+                  :money      (randomize 5 100)
+                  :sex-appeal (randomize 2 10)
+                  :mouth      (randomize 2 10)
+                  :hour       22.0
+                  :step       1
+                  :stereotype (name (rand-nth stereotypes))})
+  (println "Esto es lo que te ha tocado:")
+  (print-status)
+  (play))
 
 ;; The game begins...
 (defn -main
@@ -59,5 +90,4 @@
   (Thread/sleep 1500)
   (println "...")
   (Thread/sleep 1500)
-  (let [status {}]
-    (roulette status)))
+  (roulette))
