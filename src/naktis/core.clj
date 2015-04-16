@@ -1,22 +1,46 @@
 (ns naktis.core)
 
 ;; This is the global status of the game
-(def status (atom {:text {:cani {:drinking {:1 {:text []
-                                                :answers []}
-                                            :2 {:text []
-                                                :answers []}}
-                                 :disco {:1 {:text []
-                                             :answers []}
-                                         :2 {:text []
-                                             :answers []}}}
-                          :pijo {:drinking {:1 {:text []
-                                                :answers []}
-                                            :2 {:text []
-                                                :answers []}}
-                                 :disco {:1 {:text []
-                                             :answers []}
-                                         :2 {:text []
-                                             :answers []}}}}}))
+(def status (atom {:text {:cani {:drinking {:1 {:question "Hola cani, este es el primer texto que deberías ver en drinking"
+                                                :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}
+                                            :2 {:question "Hola cani, este es el segundo texto que deberías ver en drinking"
+                                                :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}}
+                                 :disco {:1 {:question ["Hola cani, este es el primer texto que deberías ver en disco"]
+                                             :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}
+                                         :2 {:question ["Hola cani, este es el segundo texto que deberías ver en disco"]
+                                             :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}}}
+                          :pijo {:drinking {:1 {:question ["Hola pijo, este es el primer texto que deberías ver en drinking"]
+                                                :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}
+                                            :2 {:question ["Hola pijo, este es el segundo texto que deberías ver en drinking"]
+                                                :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}}
+                                 :disco {:1 {:question ["Hola pijo, este es el primer texto que deberías ver en disco"]
+                                             :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}
+                                         :2 {:question ["Hola cani, este es el segundo texto que deberías ver en disco"]
+                                             :answers ["Primera respuesta"
+                                                          "Segunda respuesa"
+                                                          "Tercera respuesta"
+                                                          "Cuarta respuesta"]}}}}}))
 
 ;; Helper to print status' properties
 (defn print-status
@@ -47,18 +71,20 @@
   (swap! status assoc :stage 3))
 
 (defn choose-drink []
-  (cond
-    (= (:kind @status) "cani") (println "El Chustas - Ola primoh! K vas a piyar para beber?")
-    (= (:kind @status) "pijo") (println "Guillermo del Encinar"))
-  (println "1. Ron Almirante y Revoltosa")
-  (println "2. Absenta")
-  (println "3. Cerveza")
-  (println "4. "))
+  ;(cond
+  ;  (= (:kind @status) "cani") (println "El Chustas - Ola primoh! K vas a piyar para beber?")
+  ;  (= (:kind @status) "pijo") (println "Guillermo del Encinar"))
+  ;(println "1. Ron Almirante y Revoltosa")
+  ;(println "2. Absenta")
+  ;(println "3. Cerveza")
+  ;(println "4. "))
+  )
 
 (defn drinking []
-  (cond
-    (= (:kind @status) "cani") (poligono)
-    (= (:kind @status) "pijo") (chalet))
+  (println (:question (:1 (:drinking (:text @status)))))
+  ;(cond
+  ;  (= (:kind @status) "cani") (poligono)
+  ;  (= (:kind @status) "pijo") (chalet))
   (swap! status assoc :stage 2))
 
 ;; Let's keep it simple for now (:heavy, :emo, :hipster, :rapero...)
@@ -77,6 +103,9 @@
     (= (:stage @status) 3) (System/exit 0))
   (recur))
 
+(defn select-values [m ks]
+           (reduce #(if-let [v (m %2)] (conj %1 v) %1) [] ks))
+
 ;; Randomize initial state
 (defn roulette []
   (let [kind (name (rand-nth stereotypes))]
@@ -87,7 +116,7 @@
                     :hour       22.0
                     :stage      1
                     :kind       kind
-                    :text       (rest (first (select-keys (:text @status) [(keyword kind)])))})) ; Sets only the values for the randomnly chosen class in the text key (easy access later)
+                    :text       (:text (apply hash-map :text (select-values (:text @status) [(keyword kind)])))})) ; Sets only the values for the randomnly chosen class in the text key (easy access later)
   (println "Esto es lo que te ha tocado:")
   (print-status)
   (play))
@@ -96,11 +125,11 @@
 (defn -main
   []
   (println "Comienza el juego, comienza tu naktis...")
-  (Thread/sleep 3000)
+  ;(Thread/sleep 3000)
   (println "Una naktis es una noche de la que sólo saldrás vencedor si consigues mojar con una mujer humana.")
-  (Thread/sleep 3000)
+  ;(Thread/sleep 3000)
   (println "Tienes desde las 22:00 horas que son ahora hasta las 06:00 de mañana para lograr tu objetivo.")
-  (Thread/sleep 3000)
+  ;(Thread/sleep 3000)
   (println)
   (println "Pero antes que nada, tira de la ruleta de la vida...")
   (println "  1")
@@ -112,9 +141,9 @@
       (let [input (read-line)]
         (when (and (not= input "1") (not= input "2") (not= input "3") (not= input "4"))
           (println "Empiezas mal la noche... Voy a tirar desde el 1"))))
-  (Thread/sleep 1500)
+  ;(Thread/sleep 1500)
   (println "...")
-  (Thread/sleep 1500)
+  ;(Thread/sleep 1500)
   (println "...")
-  (Thread/sleep 1500)
+  ;(Thread/sleep 1500)
   (roulette))
