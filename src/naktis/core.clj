@@ -1,12 +1,27 @@
 (ns naktis.core)
 
 ;; This is the global status of the game
-(def status (atom nil))
+(def status (atom {:text {:cani {:drinking {:1 {:text []
+                                                :answers []}
+                                            :2 {:text []
+                                                :answers []}}
+                                 :disco {:1 {:text []
+                                             :answers []}
+                                         :2 {:text []
+                                             :answers []}}}
+                          :pijo {:drinking {:1 {:text []
+                                                :answers []}
+                                            :2 {:text []
+                                                :answers []}}
+                                 :disco {:1 {:text []
+                                             :answers []}
+                                         :2 {:text []
+                                             :answers []}}}}}))
 
 ;; Helper to print status' properties
 (defn print-status
   []
-  (print (str "| Tribu: " (:stereotype @status) " | "))
+  (print (str "| Tribu: " (:kind @status) " | "))
   (print (str "Dinero: " (:money @status) " € | "))
   (print (str "Sex-appeal: " (:sex-appeal @status) "/10 | "))
   (print (str "Labia: " (:mouth @status) "/10 | "))
@@ -25,24 +40,26 @@
 (defn nells []
   (println "no camisa no entras"))
 
-(defn discoteca []
+(defn disco []
   (cond
-    (= (:stereotype @status) "cani") (fabrik)
-    (= (:stereotype @status) "pijo") (nells))
-  (swap! status assoc :step 3))
+    (= (:kind @status) "cani") (fabrik)
+    (= (:kind @status) "pijo") (nells))
+  (swap! status assoc :stage 3))
 
-(defn botellon []
+(defn choose-drink []
   (cond
-    (= (:stereotype @status) "cani") (poligono)
-    (= (:stereotype @status) "pijo") (chalet))
-  (swap! status assoc :step 2))
+    (= (:kind @status) "cani") (println "El Chustas - Ola primoh! K vas a piyar para beber?")
+    (= (:kind @status) "pijo") (println "Guillermo del Encinar"))
+  (println "1. Ron Almirante y Revoltosa")
+  (println "2. Absenta")
+  (println "3. Cerveza")
+  (println "4. "))
 
-(defn play []
+(defn drinking []
   (cond
-    (= (:step @status) 1) (botellon)
-    (= (:step @status) 2) (discoteca)
-    (= (:step @status) 3) (System/exit 0))
-  (recur))
+    (= (:kind @status) "cani") (poligono)
+    (= (:kind @status) "pijo") (chalet))
+  (swap! status assoc :stage 2))
 
 ;; Let's keep it simple for now (:heavy, :emo, :hipster, :rapero...)
 (def stereotypes [:pijo, :cani])
@@ -52,15 +69,25 @@
   [lower-limit upper-limit]
   (int (+ lower-limit (* (rand) (- upper-limit lower-limit)))))
 
+;; This is the function that structure everything calling the other ones and itself
+(defn play []
+  (cond
+    (= (:stage @status) 1) (drinking)
+    (= (:stage @status) 2) (disco)
+    (= (:stage @status) 3) (System/exit 0))
+  (recur))
+
 ;; Randomize initial state
 (defn roulette []
-  (reset! status {:alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
-                  :money      (randomize 5 100)
-                  :sex-appeal (randomize 2 10)
-                  :mouth      (randomize 2 10)
-                  :hour       22.0
-                  :step       1
-                  :stereotype (name (rand-nth stereotypes))})
+  (let [kind (name (rand-nth stereotypes))]
+    (reset! status {:alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
+                    :money      (randomize 5 100)
+                    :sex-appeal (randomize 2 10)
+                    :mouth      (randomize 2 10)
+                    :hour       22.0
+                    :stage      1
+                    :kind       kind
+                    :text       (rest (first (select-keys (:text @status) [(keyword kind)])))})) ; Sets only the values for the randomnly chosen class in the text key (easy access later)
   (println "Esto es lo que te ha tocado:")
   (print-status)
   (play))
