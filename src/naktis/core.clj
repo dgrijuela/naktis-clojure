@@ -2,109 +2,109 @@
 
 ;; This is the global status of the game
 (def status (atom {:text {:cani {:drinking {:1 {:question "Hola cani, este es el primer texto que deberías ver en drinking"
-                                                :answers {"Primera respuesta": {:output "Eres un fucker"
+                                                :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Segundo respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Segundo respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Tercera respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Tercera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Cuarta respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Cuarta respuesta" {:output "Eres un fucker"
                                                                                :next-question 2
-                                                                               :modify-status {:alcohol (inc alcohol)}}}}
+                                                                               :modify-status {:alcohol 0.2}}}}
                                             :2 {:question "Hola cani, este es el segundo texto que deberías ver en drinking"
-                                                :answers {"Primera respuesta": {:output "Eres un fucker"
+                                                :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Segundo respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Segundo respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Tercera respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Tercera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Cuarta respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Cuarta respuesta" {:output "Eres un fucker"
                                                                                :next-question 2
-                                                                               :modify-status {:alcohol (inc alcohol)}}}}}
+                                                                               :modify-status {:alcohol 0.2}}}}}
                                  :disco {:1 {:question "Hola cani, este es el primer texto que deberías ver en drinking"
-                                             :answers {"Primera respuesta": {:output "Eres un fucker"
+                                             :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Segundo respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Segundo respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Tercera respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Tercera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Cuarta respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Cuarta respuesta" {:output "Eres un fucker"
                                                                             :next-question 2
-                                                                            :modify-status {:alcohol (inc alcohol)}}}}
+                                                                            :modify-status {:alcohol 0.2}}}}
                                          :2 {:question "Hola cani, este es el segundo texto que deberías ver en drinking"
-                                             :answers {"Primera respuesta": {:output "Eres un fucker"
+                                             :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Segundo respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Segundo respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Tercera respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Tercera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Cuarta respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Cuarta respuesta" {:output "Eres un fucker"
                                                                             :next-question 2
-                                                                            :modify-status {:alcohol (inc alcohol)}}}}}}
-                          :pijo {:drinking {:1 {:question "Hola cani, este es el primer texto que deberías ver en drinking"
-                                                :answers {"Primera respuesta": {:output "Eres un fucker"
+                                                                            :modify-status {:alcohol 0.2}}}}}}
+                          :pijo {:drinking {:1 {:question "Hola pijo, este es el primer texto que deberías ver en drinking"
+                                                :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Segundo respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Segundo respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Tercera respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Tercera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Cuarta respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Cuarta respuesta" {:output "Eres un fucker"
                                                                                :next-question 2
-                                                                               :modify-status {:alcohol (inc alcohol)}}}}
-                                            :2 {:question "Hola cani, este es el segundo texto que deberías ver en drinking"
-                                                :answers {"Primera respuesta": {:output "Eres un fucker"
+                                                                               :modify-status {:alcohol 0.2}}}}
+                                            :2 {:question "Hola pijo, este es el segundo texto que deberías ver en drinking"
+                                                :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Segundo respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Segundo respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Tercera respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Tercera respuesta" {:output "Eres un fucker"
                                                                                 :next-question 2
-                                                                                :modify-status {:alcohol (inc alcohol)}}
-                                                          "Cuarta respuesta": {:output "Eres un fucker"
+                                                                                :modify-status {:alcohol 0.2}}
+                                                          "Cuarta respuesta" {:output "Eres un fucker"
                                                                                :next-question 2
-                                                                               :modify-status {:alcohol (inc alcohol)}}}}}
-                                 :disco {:1 {:question "Hola cani, este es el primer texto que deberías ver en drinking"
-                                             :answers {"Primera respuesta": {:output "Eres un fucker"
+                                                                               :modify-status {:alcohol 0.2}}}}}
+                                 :disco {:1 {:question "Hola pijo, este es el primer texto que deberías ver en disco"
+                                             :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Segundo respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Segundo respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Tercera respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Tercera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Cuarta respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Cuarta respuesta" {:output "Eres un fucker"
                                                                             :next-question 2
-                                                                            :modify-status {:alcohol (inc alcohol)}}}}
-                                         :2 {:question "Hola cani, este es el segundo texto que deberías ver en drinking"
-                                             :answers {"Primera respuesta": {:output "Eres un fucker"
+                                                                            :modify-status {:alcohol 0.2}}}}
+                                         :2 {:question "Hola pijo, este es el segundo texto que deberías ver en disco"
+                                             :answers {"Primera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Segundo respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Segundo respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Tercera respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Tercera respuesta" {:output "Eres un fucker"
                                                                              :next-question 2
-                                                                             :modify-status {:alcohol (inc alcohol)}}
-                                                       "Cuarta respuesta": {:output "Eres un fucker"
+                                                                             :modify-status {:alcohol 0.2}}
+                                                       "Cuarta respuesta" {:output "Eres un fucker"
                                                                             :next-question 2
-                                                                            :modify-status {:alcohol (inc alcohol)}}}}}}}}))
+                                                                            :modify-status {:alcohol 0.2}}}}}}}}))
 
 ;; Helper to print status' properties
 (defn print-status
@@ -186,30 +186,7 @@
 
 ;; Randomize initial state
 (defn roulette []
-  (let [kind (name (rand-nth stereotypes))]
-    (reset! status {:alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
-                    :money      (randomize 5 100)
-                    :sex-appeal (randomize 2 10)
-                    :mouth      (randomize 2 10)
-                    :hour       22.0
-                    :stage      1
-                    :kind       kind
-                    :text       (:text (apply hash-map :text (select-values (:text @status) [(keyword kind)])))})) ; Sets only the values for the randomnly chosen class in the text key (easy access later)
-  (println "Esto es lo que te ha tocado:")
-  (print-status)
-  (play))
-
-;; The game begins...
-(defn -main
-  []
-  (println "Comienza el juego, comienza tu naktis...")
-  ;(Thread/sleep 3000)
-  (println "Una naktis es una noche de la que sólo saldrás vencedor si consigues mojar con una mujer humana.")
-  ;(Thread/sleep 3000)
-  (println "Tienes desde las 22:00 horas que son ahora hasta las 06:00 de mañana para lograr tu objetivo.")
-  ;(Thread/sleep 3000)
-  (println)
-  (println "Pero antes que nada, tira de la ruleta de la vida...")
+  (println "Lo primero, tiremos de la ruleta de la vida...")
   (println "  1")
   (println "4   2")
   (println "  3")
@@ -217,11 +194,42 @@
   (do (print ">> ")
       (flush)
       (let [input (read-line)]
-        (when (and (not= input "1") (not= input "2") (not= input "3") (not= input "4"))
-          (println "Empiezas mal la noche... Voy a tirar desde el 1"))))
+        (when (not-one-to-four input)
+          (let [number (randomize 1 4)] (println (str "Empiezas mal la noche... Voy a tirar desde el" number))))))
   ;(Thread/sleep 1500)
   (println "...")
   ;(Thread/sleep 1500)
   (println "...")
   ;(Thread/sleep 1500)
-  (roulette))
+  (let [kind (name (rand-nth stereotypes))]
+    (reset! status {:alcohol    (format "%.2f" (rand 0.1)) ; Just two decimals
+                    :money      (randomize 5 100)
+                    :sex-appeal (randomize 2 10)
+                    :mouth      (randomize 2 10)
+                    :hour       22.0
+                    :stage      1
+                    :level      1
+                    :kind       kind
+                    :text       (:text (apply hash-map :text (select-values (:text @status) [(keyword kind)])))})) ; Sets only the values for the randomnly chosen class in the text key (easy access later)
+  (println "Esto es lo que te ha tocado:")
+  (print-status))
+
+(defn not-one-to-four
+  [input]
+  (and (not= input "1") (not= input "2") (not= input "3") (not= input "4")))
+
+(defn introduction []
+  (println "Comienza el juego, comienza tu naktis...")
+  ;(Thread/sleep 3000)
+  (println "Una naktis es una noche de la que sólo saldrás vencedor si consigues mojar con una mujer humana.")
+  ;(Thread/sleep 3000)
+  (println "Tienes desde las 22:00 horas que son ahora hasta las 06:00 de mañana para lograr tu objetivo.")
+  ;(Thread/sleep 3000)
+  (println))
+
+;; The game begins...
+(defn -main
+  []
+  (introduction)
+  (roulette)
+  (play))
